@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:ratelimit="http://www.ruubypay.com/schema/ratelimit"
+        xmlns:tool="http://www.springframework.org/schema/tool"
+        targetNamespace="http://www.ruubypay.com/schema/ratelimit"
+        elementFormDefault="qualified">
+
+    <xsd:import namespace="http://www.springframework.org/schema/beans"/>
+    <xsd:import namespace="http://www.springframework.org/schema/tool" />
+
+    <xsd:simpleType name="configGroupBean">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <tool:annotation kind="ref">
+                    <tool:assignable-to type="com.dangdang.config.service.GeneralConfigGroup" />
+                </tool:annotation>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:union memberTypes="xsd:string" />
+    </xsd:simpleType>
+
+    <xsd:simpleType name="scriptParseBean">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <tool:annotation kind="ref">
+                    <tool:assignable-to type="com.ruubypay.ratelimit.script.AbstractScriptParser" />
+                </tool:annotation>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:union memberTypes="xsd:string" />
+    </xsd:simpleType>
+
+    <xsd:simpleType name="handlerBean">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <tool:annotation kind="ref">
+                    <tool:assignable-to type="com.ruubypay.ratelimit.aop.AspectjAopInterceptor" />
+                </tool:annotation>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:union memberTypes="xsd:string" />
+    </xsd:simpleType>
+
+
+
+    <xsd:element name="handler" type="ratelimit:handler"/>
+    <xsd:element name="interceptor" type="ratelimit:interceptor"/>
+
+    <xsd:complexType name="handler">
+        <xsd:attribute name="id" type="xsd:string" default="rateLimitHandler"/>
+        <xsd:attribute name="config-group-ref" type="ratelimit:configGroupBean" use="required"/>
+        <xsd:attribute name="script-parser" type="ratelimit:scriptParseBean" />
+    </xsd:complexType>
+
+    <xsd:complexType name="interceptor">
+        <xsd:attribute name="id" type="xsd:string" default="rateInterceptor"/>
+        <xsd:attribute name="handler" type="ratelimit:handlerBean" default="rateLimitHandler"/>
+    </xsd:complexType>
+
+</xsd:schema>
