@@ -10,7 +10,7 @@
 ```xml
     <!-- 分布式限流 -->
     <dependency>
-        <groupId>com.ruubypay.miss</groupId>
+        <groupId>com.github.chenhaiyangs</groupId>
         <artifactId>ruubypay-ratelimit-bucket4j</artifactId>
         <version>1.0.0</version>
     </dependency>
