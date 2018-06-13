@@ -4,7 +4,7 @@ import com.ruubypay.framework.configx.AbstractGeneralConfigGroup;
 import com.ruubypay.ratelimit.annotation.RateLimit;
 import com.ruubypay.ratelimit.annotation.RateLimitKey;
 import com.ruubypay.ratelimit.aop.proxy.RateLimitProxyChain;
-import com.ruubypay.ratelimit.configtoolkit.RefreshableRuleStorage;
+import com.ruubypay.ratelimit.configxstorage.RefreshableRuleStorage;
 import com.ruubypay.ratelimit.exception.WrongReturnTypeException;
 import com.ruubypay.ratelimit.script.AbstractScriptParser;
 import com.ruubypay.ratelimit.script.SpelScriptParser;

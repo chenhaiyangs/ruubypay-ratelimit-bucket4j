@@ -1,4 +1,4 @@
-package com.ruubypay.ratelimit.configtoolkit;
+package com.ruubypay.ratelimit.configxstorage;
 
 import com.ruubypay.framework.configx.AbstractGeneralConfigGroup;
 import com.ruubypay.ratelimit.ConfigStorage;
