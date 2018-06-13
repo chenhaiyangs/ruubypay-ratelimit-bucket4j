@@ -1,6 +1,6 @@
 package com.ruubypay.ratelimit;
 
-import com.dangdang.config.service.GeneralConfigGroup;
+import com.ruubypay.framework.configx.AbstractGeneralConfigGroup;
 import com.ruubypay.ratelimit.annotation.RateLimit;
 import com.ruubypay.ratelimit.annotation.RateLimitKey;
 import com.ruubypay.ratelimit.aop.proxy.RateLimitProxyChain;
@@ -33,7 +33,7 @@ public class RateLimitHandler {
      * 使用默认的spel解析器实例化限流实现
      * @param group 配置组
      */
-    public RateLimitHandler(GeneralConfigGroup group){
+    public RateLimitHandler(AbstractGeneralConfigGroup group){
         this.parser = new SpelScriptParser();
         rateLimitImpl = new RateLimitImpl(new RefreshableRuleStorage(group));
     }
@@ -43,7 +43,7 @@ public class RateLimitHandler {
      * @param group 配置组
      * @param parser 解析器实现类
      */
-    public RateLimitHandler(GeneralConfigGroup group,AbstractScriptParser parser){
+    public RateLimitHandler(AbstractGeneralConfigGroup group,AbstractScriptParser parser){
         this.parser= parser;
         rateLimitImpl = new RateLimitImpl(new RefreshableRuleStorage(group));
     }

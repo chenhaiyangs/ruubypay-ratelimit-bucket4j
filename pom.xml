@@ -74,18 +74,11 @@
             <artifactId>bucket4j-jcache</artifactId>
             <version>3.1.1</version>
         </dependency>
-        <!-- 配置文件热更新,使用了当当网的config-toolkit框架 -->
+        <!-- 配置中心工具包 -->
         <dependency>
-            <groupId>com.dangdang</groupId>
-            <artifactId>config-toolkit</artifactId>
-            <version>3.2.4-RELEASE</version>
-            <scope>compile</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.curator</groupId>
-                    <artifactId>curator-framework</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>com.github.chenhaiyangs</groupId>
+            <artifactId>ruubypay-configx-core</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <!-- jchahe -->
         <dependency>

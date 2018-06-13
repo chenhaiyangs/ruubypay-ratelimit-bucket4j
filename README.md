@@ -1,7 +1,7 @@
 # RateLimit 请求限制工具
 
-实现：springSpel + springAop + annotation + config-toolkit + bucket4j + jcache + zookeeper <br/>
-亦可直接开箱即用，不强依赖 config-toolkit和Spring。在本框架中，config-toolkit工具只是作为一个热配置中心的实现，依靠他可以实现限流参数动态热加载。<br/>
+实现：springSpel + springAop + annotation + configx + bucket4j + jcache + zookeeper <br/>
+亦可直接开箱即用，不强依赖 configx和Spring。在本框架中，configx工具只是作为一个热配置中心的实现，依靠他可以实现限流参数动态热加载。<br/>
 用户也可自行实现com.ruubypay.ratelimit.ConfigStorage 去扩展自己的限流参数配置类实现。<br/>
 
 ### 快速接入：
@@ -12,7 +12,7 @@
     <dependency>
         <groupId>com.github.chenhaiyangs</groupId>
         <artifactId>ruubypay-ratelimit-bucket4j</artifactId>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
     </dependency>
 ```    
 二，直接使用：
@@ -51,9 +51,9 @@
  * 2,1,240
 * 240指令牌桶容量为240个，即可以保存240个令牌，该设置是为了在基础限流的同时保证突发流量可以被桶内额外保存的令牌处理。（限流更灵活）
 
-### 与config-toolkit和Spring框架集成。
+### 与configx和Spring框架集成。
 
-实际开发中，一般不会硬编码限流功能。限流策略需要动态配置（与config-toolkit集成）也要充分考虑限流代码与业务代码的低耦合要求。因此本工具也提供了基于AOP+annotation的注解的实现。详细用法：<br/>
+实际开发中，一般不会硬编码限流功能。限流策略需要动态配置（与configx集成）也要充分考虑限流代码与业务代码的低耦合要求。因此本工具也提供了基于AOP+annotation的注解的实现。详细用法：<br/>
 1. 在项目resources或任意classpath下添加hazelcast.xml配置文件，修改其中zookeeper相关设置。
 2. 添加一个spring配置文件，并被spring容器加载
 ```xml

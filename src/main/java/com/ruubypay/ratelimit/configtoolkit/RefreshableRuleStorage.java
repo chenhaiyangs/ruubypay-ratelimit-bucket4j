@@ -1,25 +1,25 @@
 package com.ruubypay.ratelimit.configtoolkit;
 
-import com.dangdang.config.service.GeneralConfigGroup;
-import com.dangdang.config.service.sugar.RefreshableBox;
+import com.ruubypay.framework.configx.AbstractGeneralConfigGroup;
 import com.ruubypay.ratelimit.ConfigStorage;
 import com.ruubypay.ratelimit.RateLimitImpl;
 import com.ruubypay.ratelimit.Rule;
+import com.ruubypay.ratelimit.configx.AbstractRefreshableBox;
 import com.ruubypay.ratelimit.exception.ConfigKeyNotExistsException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 
 /**
- * configtoolkit的一个ConfigStorage的实现
+ * configx的一个ConfigStorage的实现
  * @author chenhaiyang
  */
 @Slf4j
-public class RefreshableRuleStorage extends RefreshableBox<HashMap<String, Rule>> implements ConfigStorage{
+public class RefreshableRuleStorage extends AbstractRefreshableBox<HashMap<String, Rule>> implements ConfigStorage{
 
     private RateLimitImpl callback;
-    public RefreshableRuleStorage(GeneralConfigGroup node) {
-        super(node, null);
+    public RefreshableRuleStorage(AbstractGeneralConfigGroup node) {
+        super(node);
     }
 
     /**
@@ -50,7 +50,7 @@ public class RefreshableRuleStorage extends RefreshableBox<HashMap<String, Rule>
      * @return 返回规则集合
      */
     @Override
-    protected HashMap<String, Rule> doInit(GeneralConfigGroup node) {
+    protected HashMap<String, Rule> doInit(AbstractGeneralConfigGroup node) {
         HashMap<String, Rule> temp = new HashMap<>(16);
         node.forEach((k, v) -> temp.put(k, new Rule(k, v)));
         log.info("refreshing rule storage, total rules: [{}]", temp.size());
