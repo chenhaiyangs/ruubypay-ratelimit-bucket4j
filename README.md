@@ -16,7 +16,14 @@
     </dependency>
 ```    
 二，直接使用：
-1. 在项目resources或任意classpath下添加hazelcast.xml配置文件，修改其中zookeeper相关设置。
+1. 在项目resources或任意classpath下添加hazelcast.xml配置文件，修改配置：
+        
+        
+        zookeeper_url：zookeeper路径地址
+        zookeeper_path：发现服务的节点路径
+        group：hazelecast组
+        建议：不同的限流服务的zookeeper_path和group需要设置为不同的名称
+        network.port hazelcast服务的通信端口，默认5701。每个程序需要开放该端口。并要要使得集群组内的所有服务之间需要能互相联通
 2. 在项目中生成RateLimit单例，在每个请求前添加下列代码实现请求限制。
 
 ```java
